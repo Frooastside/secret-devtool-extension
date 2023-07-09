@@ -1,0 +1,22 @@
+{
+	"name": "Secret Devtool",
+	"description": "This extension is created to bypass devtools-detector (https://github.com/AEPKILL/devtools-detector) performance checker in a really hacky way.",
+	"version": "1.0",
+	"manifest_version": 3,
+	"action": {},
+	"content_scripts": [
+	  {
+		"matches": ["*://*/*"],
+		"js": ["transformer.js"],
+		"all_frames": true,
+		"run_at": "document_start",
+		"world": "MAIN"
+	  }
+	],
+	"background": {
+		"service_worker": "background.js"
+	},
+	"content_security_policy": {
+	  "extension_pages": "default-src 'self' 'wasm-unsafe-eval';"
+	}
+}
